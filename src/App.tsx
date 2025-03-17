@@ -1,10 +1,10 @@
-import "./App.css";
-import { RenderRouter } from "./routes";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
 
 function App() {
   return (
     <>
-      <RenderRouter />
+      <RouterProvider router={router} />
     </>
   );
 }
