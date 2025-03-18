@@ -4,6 +4,7 @@ import { getPost } from "@/lib/getPost";
 import MarkdownRenderer from "@/shared/ui/MarkdownRenderer";
 import { Tag } from "@/shared/ui/Tag";
 import { v4 as uuidv4 } from "uuid";
+import Comments from "@/components/ui/Comments";
 
 function PostDetail() {
   const { id } = useParams<{ id: string }>();
@@ -45,7 +46,7 @@ function PostDetail() {
     return <p className="error-message">포스트를 찾을 수 없습니다.</p>;
 
   return (
-    <div className="max-w-[900px]">
+    <div className="mt-10 max-w-[900px]">
       <header className="post-detail__header">
         {postThumbnail && (
           <div className="flex max-w-full justify-center">
@@ -56,7 +57,9 @@ function PostDetail() {
             />
           </div>
         )}
-        <h1 className="text-foreground text-3xl font-bold">{postTitle}</h1>
+        <h1 className="text-foreground mt-[20px] text-3xl font-bold">
+          {postTitle}
+        </h1>
         <p className="text-popover mt-[20px]">{postDate}</p>
         <ul className="mt-3 flex w-full flex-wrap gap-2">
           {postTags.map((tag) => (
@@ -70,6 +73,8 @@ function PostDetail() {
       <main className="post-detail__content">
         <MarkdownRenderer content={postContent} />
       </main>
+
+      <Comments />
     </div>
   );
 }

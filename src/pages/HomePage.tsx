@@ -25,9 +25,13 @@ const HomePage = () => {
 
   return (
     <div className="w-full">
-      <div className="mt-7 mb-10 max-w-[1050px]">
-        <div className="h-[150px] w-full bg-black"></div>
+      <div className="mt-7 mb-10 h-[300px] max-w-[1050px] overflow-hidden rounded-2xl">
+        <img
+          src="/banner.png"
+          className="h-full w-full rounded-2xl object-cover"
+        />
       </div>
+
       <div className="flex w-full justify-evenly">
         <PostList posts={posts} isLoading={isLoading} />
         <SideBar posts={posts} />

@@ -76,7 +76,7 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="제목 및 태그 검색.."
-                className="focus:ring-none border-input w-64 rounded-lg border p-2 text-base focus:outline-none"
+                className="focus:ring-none border-ring w-64 rounded-lg border p-2 text-base focus:outline-none"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)} // ✅ 입력값 업데이트
                 onKeyDown={handleSearch} // ✅ 엔터 키 입력 처리
@@ -108,7 +108,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="제목 및 태그 검색.."
-              className="border-input text-foreground w-full rounded-lg border p-2 text-base focus:outline-none"
+              className="border-ring text-foreground w-full rounded-lg border p-2 text-base focus:outline-none"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)} // ✅ 입력값 업데이트
               onKeyDown={handleSearch} // ✅ 엔터 키 입력 처리
