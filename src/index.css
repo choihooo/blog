@@ -4,71 +4,84 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #f2f4f7; /* 토스 배경 색상 */
-  --foreground: #1a1a1a; /* 토스 텍스트 색상 */
-  --card: #ffffff; /* 카드 배경 색상 */
-  --card-foreground: #1a1a1a; /* 카드 텍스트 색상 */
-  --popover: #ffffff; /* 팝오버 배경 색상 */
-  --popover-foreground: #1a1a1a; /* 팝오버 텍스트 색상 */
-  --primary: #2c7bf7; /* 토스 파란색 */
-  --primary-foreground: #ffffff; /* 토스 파란색 텍스트 */
-  --secondary: #f1f1f1; /* 회색 */
-  --secondary-foreground: #2c7bf7; /* 파란색 */
-  --muted: #e9e9e9; /* 연한 회색 */
-  --muted-foreground: #5a5a5a; /* 중간 회색 */
-  --accent: #ff5c8d; /* 핑크색 */
-  --accent-foreground: #ffffff; /* 핑크색 텍스트 */
-  --destructive: #ff1a1a; /* 빨간색 */
-  --border: #dddddd; /* 연한 회색 */
-  --input: #ffffff; /* 입력 필드 배경 색상 */
-  --ring: #2c7bf7; /* 파란색 */
-  --chart-1: #ff9f43; /* 오렌지 */
-  --chart-2: #29a8e0; /* 파란색 */
-  --chart-3: #6b9cff; /* 연한 파란색 */
-  --chart-4: #ffacac; /* 연한 빨간색 */
-  --chart-5: #72a2ff; /* 연한 파란색 */
-  --sidebar: #ffffff; /* 사이드바 배경 색상 */
-  --sidebar-foreground: #1a1a1a; /* 사이드바 텍스트 색상 */
-  --sidebar-primary: #2c7bf7; /* 사이드바 파란색 */
-  --sidebar-primary-foreground: #ffffff; /* 사이드바 파란색 텍스트 */
-  --sidebar-accent: #ff5c8d; /* 사이드바 핑크색 */
-  --sidebar-accent-foreground: #ffffff; /* 사이드바 핑크색 텍스트 */
-  --sidebar-border: #dddddd; /* 사이드바 경계선 색상 */
-  --sidebar-ring: #2c7bf7; /* 사이드바 링 색상 */
+
+  /* Light Theme */
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #2c7bf7;
+  --primary-foreground: #ffffff;
+  --secondary: #e6f0ff;
+  --secondary-foreground: #1a5dcf;
+  --muted: #f5f9ff;
+  --muted-foreground: #4d6b9a;
+  --accent: #4d91ff;
+  --accent-foreground: #ffffff;
+  --destructive: #ff3b3b;
+  --destructive-foreground: #ffffff;
+  --border: #d1e3ff;
+  --input: #ffffff;
+  --ring: #2c7bf7;
+
+  /* Charts */
+  --chart-1: #2c7bf7; /* Primary */
+  --chart-2: #4d91ff; /* Lighter primary */
+  --chart-3: #1a5dcf; /* Darker primary */
+  --chart-4: #86b6ff; /* Even lighter primary */
+  --chart-5: #0a3b8f; /* Even darker primary */
+
+  /* Sidebar */
+  --sidebar: #f5f9ff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #2c7bf7;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #4d91ff;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #d1e3ff;
+  --sidebar-ring: #2c7bf7;
 }
 
 .dark {
-  --background: #1a1a1a; /* 어두운 모드 배경 */
-  --foreground: #ffffff; /* 어두운 모드 텍스트 */
-  --card: #2c2c2c; /* 어두운 모드 카드 */
-  --card-foreground: #ffffff; /* 어두운 모드 카드 텍스트 */
-  --popover: #2c2c2c; /* 어두운 모드 팝오버 */
-  --popover-foreground: #ffffff; /* 어두운 모드 팝오버 텍스트 */
-  --primary: #2c7bf7; /* 어두운 모드 파란색 */
-  --primary-foreground: #ffffff; /* 어두운 모드 파란색 텍스트 */
-  --secondary: #333333; /* 어두운 모드 회색 */
-  --secondary-foreground: #ffffff; /* 어두운 모드 회색 텍스트 */
-  --muted: #444444; /* 어두운 모드 연한 회색 */
-  --muted-foreground: #cccccc; /* 어두운 모드 연한 회색 텍스트 */
-  --accent: #ff5c8d; /* 어두운 모드 핑크색 */
-  --accent-foreground: #ffffff; /* 어두운 모드 핑크색 텍스트 */
-  --destructive: #ff1a1a; /* 어두운 모드 빨간색 */
-  --border: #444444; /* 어두운 모드 경계선 */
-  --input: #2c2c2c; /* 어두운 모드 입력 필드 */
-  --ring: #2c7bf7; /* 어두운 모드 파란색 링 */
-  --chart-1: #ff9f43; /* 어두운 모드 오렌지 */
-  --chart-2: #29a8e0; /* 어두운 모드 파란색 */
-  --chart-3: #6b9cff; /* 어두운 모드 연한 파란색 */
-  --chart-4: #ffacac; /* 어두운 모드 연한 빨간색 */
-  --chart-5: #72a2ff; /* 어두운 모드 연한 파란색 */
-  --sidebar: #2c2c2c; /* 어두운 모드 사이드바 배경 */
-  --sidebar-foreground: #ffffff; /* 어두운 모드 사이드바 텍스트 */
-  --sidebar-primary: #2c7bf7; /* 어두운 모드 사이드바 파란색 */
-  --sidebar-primary-foreground: #ffffff; /* 어두운 모드 사이드바 텍스트 */
-  --sidebar-accent: #ff5c8d; /* 어두운 모드 사이드바 핑크색 */
-  --sidebar-accent-foreground: #ffffff; /* 어두운 모드 사이드바 텍스트 */
-  --sidebar-border: #444444; /* 어두운 모드 사이드바 경계선 */
-  --sidebar-ring: #2c7bf7; /* 어두운 모드 사이드바 링 */
+  /* Dark Theme */
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --card: #242424;
+  --card-foreground: #ffffff;
+  --popover: #242424;
+  --popover-foreground: #ffffff;
+  --primary: #ff5c8d;
+  --primary-foreground: #ffffff;
+  --secondary: #4a2936;
+  --secondary-foreground: #ffc1d3;
+  --muted: #382830;
+  --muted-foreground: #ffa5be;
+  --accent: #ff7da3;
+  --accent-foreground: #ffffff;
+  --destructive: #ff3b3b;
+  --destructive-foreground: #ffffff;
+  --border: #662e46;
+  --input: #242424;
+  --ring: #ff5c8d;
+
+  /* Charts */
+  --chart-1: #ff5c8d; /* Primary */
+  --chart-2: #ff7da3; /* Lighter primary */
+  --chart-3: #d43a6b; /* Darker primary */
+  --chart-4: #ffb0c6; /* Even lighter primary */
+  --chart-5: #a82954; /* Even darker primary */
+
+  /* Sidebar */
+  --sidebar: #242424;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ff5c8d;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ff7da3;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #662e46;
+  --sidebar-ring: #ff5c8d;
 }
 
 @theme inline {
@@ -116,4 +129,32 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* keyframes 정의 */
+@keyframes expand {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%; /* 최대 높이를 지정해야 실제 효과가 나타날 수 있음 */
+  }
+}
+
+@keyframes collapse {
+  from {
+    height: 100%;
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Tailwind와 함께 사용하기 */
+.mobile-menu-expand {
+  animation: expand 0.3s ease-in-out forwards; /* 애니메이션을 한 번 실행하고 마지막 상태에 머무르도록 설정 */
+}
+
+.mobile-menu-collapse {
+  animation: collapse 0.3s ease-in-out forwards;
 }
