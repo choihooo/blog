@@ -12,7 +12,7 @@ const posts = files
     const metadata = fm(content);
     return {
       title: metadata.attributes.title,
-      date: new Date(metadata.attributes.date), // ✅ 날짜를 Date 객체로 변환
+      date: metadata.attributes.date,
       categories: metadata.attributes.categories,
       tags: metadata.attributes.tags,
       series: metadata.attributes.series,
@@ -20,7 +20,7 @@ const posts = files
       thumbnail: metadata.attributes.thumbnail,
     };
   })
-  .sort((a, b) => b.date - a.date); // ✅ 최신 날짜가 먼저 오도록 정렬
+  .sort((a, b) => b.date - a.date);
 
 fs.writeFileSync(outputJson, JSON.stringify(posts, null, 2));
 

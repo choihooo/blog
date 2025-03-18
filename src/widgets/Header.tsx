@@ -1,19 +1,27 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState(""); // ✅ 검색어 상태 추가
+  const navigate = useNavigate(); // ✅ 검색어 입력 후 페이지 이동을 위한 useNavigate
 
   const toggleMenuAndScrollToTop = () => {
     if (!isMenuOpen) {
-      // 메뉴가 닫혀 있을 때만 실행
-      window.scrollTo({
-        top: 0, // 스크롤을 맨 위로 이동
-        behavior: "smooth", // 부드러운 스크롤 효과
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
     setMenuOpen(!isMenuOpen);
+  };
+
+  // ✅ 엔터 키 입력 시 검색 페이지로 이동
+  const handleSearch = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter" && searchTerm.trim() !== "") {
+      setTimeout(() => {
+        navigate(`/search/${encodeURIComponent(searchTerm.trim())}`);
+        setSearchTerm(""); // ✅ 검색 후 입력값 초기화
+      }, 0);
+    }
   };
 
   return (
@@ -69,6 +77,9 @@ const Header = () => {
                 type="text"
                 placeholder="제목 및 태그 검색.."
                 className="focus:ring-none border-input w-64 rounded-lg border p-2 text-base focus:outline-none"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)} // ✅ 입력값 업데이트
+                onKeyDown={handleSearch} // ✅ 엔터 키 입력 처리
               />
             </div>
           </div>
@@ -98,6 +109,9 @@ const Header = () => {
               type="text"
               placeholder="제목 및 태그 검색.."
               className="border-input text-foreground w-full rounded-lg border p-2 text-base focus:outline-none"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} // ✅ 입력값 업데이트
+              onKeyDown={handleSearch} // ✅ 엔터 키 입력 처리
             />
           </div>
         </div>

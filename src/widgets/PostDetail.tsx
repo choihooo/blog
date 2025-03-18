@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getPost } from "@/lib/getPost"; // ✅ getPost 함수 import
+import { getPost } from "@/lib/getPost";
 import MarkdownRenderer from "@/shared/ui/MarkdownRenderer";
 import { Tag } from "@/shared/ui/Tag";
 import { v4 as uuidv4 } from "uuid";
 
 function PostDetail() {
   const { id } = useParams<{ id: string }>();
-  const decodedId = id ? decodeURIComponent(id) : ""; // ✅ URL 디코딩 적용
+  const decodedId = id ? decodeURIComponent(id) : "";
   const [postContent, setPostContent] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postDate, setPostDate] = useState("");
   const [postThumbnail, setPostThumbnail] = useState<string>(
     "/default-thumbnail.jpg",
-  ); // ✅ 기본값 추가
+  );
   const [postTags, setPostTags] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState(true); // ✅ 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!decodedId) return; // ✅ id가 없으면 요청하지 않음
+    if (!decodedId) return;
 
     const fetchPostContent = async () => {
       setIsLoading(true);
@@ -28,7 +28,7 @@ function PostDetail() {
           setPostContent(postData.content);
           setPostTitle(postData.title);
           setPostDate(postData.date);
-          setPostThumbnail(postData.thumbnail || "/default-thumbnail.jpg"); // ✅ 기본값 유지
+          setPostThumbnail(postData.thumbnail || "/default-thumbnail.jpg");
           setPostTags(postData.tags || []);
         }
       } catch (error) {
@@ -45,19 +45,19 @@ function PostDetail() {
     return <p className="error-message">포스트를 찾을 수 없습니다.</p>;
 
   return (
-    <div className="post-detail">
+    <div className="max-w-[900px]">
       <header className="post-detail__header">
         {postThumbnail && (
-          <div className="post-detail__header-thumbnail">
+          <div className="flex max-w-full justify-center">
             <img
-              src={postThumbnail} // ✅ postThumbnail을 string으로 설정
+              src={postThumbnail}
               alt={postTitle}
-              className="post-detail__header-thumbnail-img"
+              className="max-h-[300px] w-full rounded-2xl object-cover transition-all duration-300 ease-in-out md:max-h-[500px] lg:max-h-[600px]"
             />
           </div>
         )}
-        <h1 className="post-detail__header-title">{postTitle}</h1>
-        <p className="post-detail__header-date">{postDate}</p>
+        <h1 className="text-foreground text-3xl font-bold">{postTitle}</h1>
+        <p className="text-popover mt-[20px]">{postDate}</p>
         <ul className="mt-3 flex w-full flex-wrap gap-2">
           {postTags.map((tag) => (
             <li key={uuidv4()} className="tag">
