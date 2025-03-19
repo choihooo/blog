@@ -25,11 +25,13 @@ const HomePage = () => {
 
   return (
     <div className="w-full">
-      <div className="mt-7 mb-10 h-[300px] max-w-[1050px] overflow-hidden rounded-2xl">
-        <img
-          src="/banner.png"
-          className="h-full w-full rounded-2xl object-cover"
-        />
+      <div className="flex w-full items-center justify-center">
+        <div className="mt-7 mb-10 h-[100px] max-w-[900px] w-full overflow-hidden rounded-2xl">
+          <img
+            src="/banner.png"
+            className="h-full w-full rounded-2xl object-cover"
+          />
+        </div>
       </div>
 
       <div className="flex w-full justify-evenly">

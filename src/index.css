@@ -27,10 +27,10 @@
   --ring: #2c7bf7;
 
   /* Charts */
-  --chart-1: #2c7bf7; /* Primary */
+  --chart-1: ##4e5968; /* Primary */
   --chart-2: #4d91ff; /* Lighter primary */
   --chart-3: #1a5dcf; /* Darker primary */
-  --chart-4: #86b6ff; /* Even lighter primary */
+  --chart-4: #eaeef3; /* Even lighter primary */
   --chart-5: #0a3b8f; /* Even darker primary */
 
   /* Sidebar */
@@ -67,10 +67,10 @@
   --ring: #ff5c8d;
 
   /* Charts */
-  --chart-1: #ff5c8d; /* Primary */
+  --chart-1: #adb6c1; /* Primary */
   --chart-2: #ff7da3; /* Lighter primary */
   --chart-3: #d43a6b; /* Darker primary */
-  --chart-4: #ffb0c6; /* Even lighter primary */
+  --chart-4: #2e2c2c; /* Even lighter primary */
   --chart-5: #a82954; /* Even darker primary */
 
   /* Sidebar */

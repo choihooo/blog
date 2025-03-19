@@ -29,6 +29,36 @@
     "excerpt": "이 포스트는 '시리즈 이름' 시리즈의 일부입니다."
   },
   {
+    "title": "포스트-제목-3",
+    "date": "2025년 3월 18일",
+    "categories": [
+      "Blogging",
+      "Tutorial"
+    ],
+    "tags": [
+      "series",
+      "example"
+    ],
+    "series": "시리즈 이름",
+    "excerpt": "이 포스트는 '시리즈 이름' 시리즈의 일부입니다.",
+    "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT-nkpZ6mzVDnmyfZkwRMRnrl2sUNxpX23a73sX6ZjEF82YVog7XZfu-k4TqGl3fQLMZRCe_AoWs5HPo__ktt4Ei_I8K-_wwftNhwNxbw"
+  },
+  {
+    "title": "포스트-제목-4",
+    "date": "2025년 3월 18일",
+    "categories": [
+      "Blogging",
+      "Tutorial"
+    ],
+    "tags": [
+      "series",
+      "example"
+    ],
+    "series": "시리즈 이름",
+    "excerpt": "이 포스트는 '시리즈 이름' 시리즈의 일부입니다.",
+    "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT-nkpZ6mzVDnmyfZkwRMRnrl2sUNxpX23a73sX6ZjEF82YVog7XZfu-k4TqGl3fQLMZRCe_AoWs5HPo__ktt4Ei_I8K-_wwftNhwNxbw"
+  },
+  {
     "title": "포스트-제목-1",
     "date": "2025년 3월 18일",
     "categories": [

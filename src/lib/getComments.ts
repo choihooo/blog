@@ -1,3 +1,5 @@
+import { title } from "process";
+
 const GITHUB_COMMENTS_API =
   "https://api.github.com/repos/choihooo/comment/issues/comments"; // ❗ 필요 시 사용
 
@@ -30,6 +32,14 @@ async function getIssueContent(issueUrl: string) {
   }
 }
 
+// ✅ 제목 디코딩 + "post/" 접두사 제거 함수
+function formatTitle(title: string) {
+  const decodedTitle = decodeURIComponent(title); // URL 디코딩
+  return decodedTitle.startsWith("post/")
+    ? decodedTitle.slice(5)
+    : decodedTitle; // "post/" 제거
+}
+
 // ✅ 최근 댓글 가져오기 + 해당 이슈(게시글) 내용 포함
 export async function getRecentComments() {
   try {
@@ -53,11 +63,11 @@ export async function getRecentComments() {
       comments.map(async (comment: any) => {
         const postContent = await getIssueContent(comment.issue_url);
         const match = postContent.body.match(/\[(https?:\/\/[^\]]+)\]/);
-
         const extractedUrl = match ? match[1] : null;
 
         return {
           id: comment.id,
+          title: formatTitle(postContent.title), // ✅ 디코딩 후 "post/" 제거
           body: comment.body,
           user: comment.user.login,
           avatar: comment.user.avatar_url,

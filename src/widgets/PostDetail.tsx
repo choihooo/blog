@@ -4,11 +4,12 @@ import { getPost } from "@/lib/getPost";
 import MarkdownRenderer from "@/shared/ui/MarkdownRenderer";
 import { Tag } from "@/shared/ui/Tag";
 import { v4 as uuidv4 } from "uuid";
-import Comments from "@/components/ui/Comments";
+import Comments from "@/shared/ui/Comments";
+import { increaseViewCount } from "@/lib/increaseViewCount";
 
 function PostDetail() {
-  const { id } = useParams<{ id: string }>();
-  const decodedId = id ? decodeURIComponent(id) : "";
+  const { slug } = useParams<{ slug: string }>();
+  const decodedId = slug ? decodeURIComponent(slug) : "";
   const [postContent, setPostContent] = useState("");
   const [postTitle, setPostTitle] = useState("");
   const [postDate, setPostDate] = useState("");
@@ -41,6 +42,11 @@ function PostDetail() {
     fetchPostContent();
   }, [decodedId]);
 
+  useEffect(() => {
+    if (slug) increaseViewCount(slug);
+    console.log(slug)
+  }, [slug]);
+
   if (isLoading) return <p className="loading">로딩 중...</p>;
   if (!postContent)
     return <p className="error-message">포스트를 찾을 수 없습니다.</p>;
@@ -49,11 +55,11 @@ function PostDetail() {
     <div className="mt-10 max-w-[900px]">
       <header className="post-detail__header">
         {postThumbnail && (
-          <div className="flex max-w-full justify-center">
+          <div className="flex w-full justify-center">
             <img
               src={postThumbnail}
               alt={postTitle}
-              className="max-h-[300px] w-full rounded-2xl object-cover transition-all duration-300 ease-in-out md:max-h-[500px] lg:max-h-[600px]"
+              className="w-full rounded-2xl object-cover"
             />
           </div>
         )}

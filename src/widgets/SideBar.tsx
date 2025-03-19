@@ -1,4 +1,5 @@
-import RecentComments from "@/components/ui/RecentComments";
+import { PopularPosts } from "@/shared/ui/PopularPosts";
+import RecentComments from "@/shared/ui/RecentComments";
 import { Tag } from "@/shared/ui/Tag";
 import { PostListType } from "@/types";
 import { v4 as uuidv4 } from "uuid";
@@ -12,8 +13,12 @@ const SideBar = ({ posts }: SideBarProps) => {
 
   return (
     <div className="hidden max-w-[349px] min-w-[349px] px-6 md:block">
-      <div>
-        <div>최신 댓글</div>
+      <div className="mb-6">
+        <div className="text-secondary-foreground text-[13px]">인기있는 글</div>
+        <PopularPosts />
+      </div>
+      <div className="mb-6">
+        <div className="text-secondary-foreground text-[13px]">최신 댓글</div>
         <RecentComments />
       </div>
       <div>

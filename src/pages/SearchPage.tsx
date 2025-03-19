@@ -5,8 +5,8 @@ import SideBar from "@/widgets/SideBar";
 import { PostListType } from "@/types";
 
 const SearchPage = () => {
-  const { id } = useParams<{ id?: string }>();
-  const decodedId = id ? decodeURIComponent(id).toLowerCase() : "";
+  const { slug } = useParams<{ slug?: string }>();
+  const decodedId = slug ? decodeURIComponent(slug).toLowerCase() : "";
   const [posts, setPosts] = useState<PostListType[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<PostListType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
