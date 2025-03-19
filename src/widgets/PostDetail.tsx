@@ -44,7 +44,7 @@ function PostDetail() {
 
   useEffect(() => {
     if (slug) increaseViewCount(slug);
-    console.log(slug)
+    console.log(slug);
   }, [slug]);
 
   if (isLoading) return <p className="loading">로딩 중...</p>;
@@ -59,10 +59,11 @@ function PostDetail() {
             <img
               src={postThumbnail}
               alt={postTitle}
-              className="w-full rounded-2xl object-cover"
+              className="h-auto w-full max-w-full rounded-2xl object-cover"
             />
           </div>
         )}
+
         <h1 className="text-foreground mt-[20px] text-3xl font-bold">
           {postTitle}
         </h1>
@@ -78,9 +79,8 @@ function PostDetail() {
 
       <main className="post-detail__content">
         <MarkdownRenderer content={postContent} />
+        <Comments />
       </main>
-
-      <Comments />
     </div>
   );
 }

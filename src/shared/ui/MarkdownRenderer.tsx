@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypePrism from "rehype-prism-plus";
-import "prism-themes/themes/prism-ghcolors.css"; // ✅ 라이트모드 테마 (GitHub 스타일)
-import "prism-themes/themes/prism-dracula.css"; // ✅ 다크모드 테마 (Dracula 스타일)
+import "prism-themes/themes/prism-ghcolors.css"; // 라이트모드 테마
+import "prism-themes/themes/prism-dracula.css"; // 다크모드 테마
 
 interface MarkdownRendererProps {
   content: string;
@@ -11,6 +11,8 @@ interface MarkdownRendererProps {
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const contentRef = useRef<HTMLDivElement | null>(null); // Markdown content의 ref 추가
 
   useEffect(() => {
     const checkDarkMode = () => {
@@ -31,9 +33,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
     <div
       className={`post-content ${isDarkMode ? "dark-theme" : "light-theme"}`}
     >
-      <ReactMarkdown rehypePlugins={[rehypeRaw, rehypePrism]}>
-        {content}
-      </ReactMarkdown>
+      {/* Markdown Content */}
+      <div ref={contentRef}>
+        <ReactMarkdown rehypePlugins={[rehypeRaw, rehypePrism]}>
+          {content}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 };

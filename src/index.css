@@ -205,3 +205,8 @@
     border-radius: 3px;
   }
 }
+
+.utterances {
+  max-width: 100% !important;
+  min-height: 950px !important;
+}
