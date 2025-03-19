@@ -2,6 +2,7 @@ import { PostList } from "@/widgets/PostList";
 import SideBar from "@/widgets/SideBar";
 import { useEffect, useState } from "react";
 import { PostListType } from "@/types";
+import { SEO } from "@/components/SEO";
 
 const HomePage = () => {
   const [posts, setPosts] = useState<PostListType[]>([]);
@@ -24,21 +25,24 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="w-full">
-      <div className="flex w-full items-center justify-center">
-        <div className="mt-7 mb-10 h-[100px] max-w-[900px] w-full overflow-hidden rounded-2xl">
-          <img
-            src="/banner.png"
-            className="h-full w-full rounded-2xl object-cover"
-          />
+    <>
+      <SEO  title="Howu Run"/>
+      <div className="w-full">
+        <div className="flex w-full items-center justify-center">
+          <div className="mt-7 mb-10 h-[100px] w-full max-w-[900px] overflow-hidden rounded-2xl">
+            <img
+              src="/banner.png"
+              className="h-full w-full rounded-2xl object-cover"
+            />
+          </div>
+        </div>
+
+        <div className="flex w-full justify-evenly">
+          <PostList posts={posts} isLoading={isLoading} />
+          <SideBar posts={posts} />
         </div>
       </div>
-
-      <div className="flex w-full justify-evenly">
-        <PostList posts={posts} isLoading={isLoading} />
-        <SideBar posts={posts} />
-      </div>
-    </div>
+    </>
   );
 };
 
