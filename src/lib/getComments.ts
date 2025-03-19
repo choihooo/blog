@@ -1,5 +1,3 @@
-import { title } from "process";
-
 const GITHUB_COMMENTS_API =
   "https://api.github.com/repos/choihooo/comment/issues/comments"; // ❗ 필요 시 사용
 
