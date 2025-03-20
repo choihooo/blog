@@ -91,11 +91,11 @@ const Header = () => {
       >
         <div className="mx-auto flex max-w-[1200px] flex-col gap-4 p-4">
           <Link
-            to="/about"
-            className="hover:bg-muted block rounded-md p-2"
+            to="/series"
+            className="cursor-pointer"
             onClick={toggleMenuAndScrollToTop}
           >
-            About
+            Series
           </Link>
           <Link
             to="/portfolio"
