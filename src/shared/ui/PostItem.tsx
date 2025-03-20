@@ -28,7 +28,7 @@ export const PostItem = ({ post, isLoading }: PostListProps) => {
                 <div className="group-hover:text-primary text-[16px]">
                   {post.title}
                 </div>
-                <div className="max-h-[100px] overflow-hidden text-[13px] text-ellipsis">
+                <div className="max-h-[100px] overflow-hidden text-[13px] text-ellipsis line-clamp-5">
                   {post.excerpt}
                 </div>
                 <div className="text-[12px]">{post.date}</div>

@@ -5,7 +5,7 @@
   "short_name": "Howu Run",
   "start_url": "/",
   "scope": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "id": "Howu",
   "description": "Howu Run Development Blog",
   "launch_handler": {
