@@ -4,7 +4,7 @@ date: 2025월 02월 26일 03:44
 categories: [Dev, Next]
 tags: [Nextjs, Loader, Action]
 series: "Next 스터디"
-excerpt: "Next.js에서는 애플리케이션의 모든 페이지가 React 컴포넌트로 이루어져 있지만, 기본적으로 HTML의 `<html>`, `<head>`, `<body>` 태그 같은 구조는 자동으로 생성됩니다. 하지만 때로는 이러한 구조를 커스터마이징할 필요가 있을 때가 있습니다. 바로 이때 사용하는 파일이 **_document.js**입니다."
+excerpt: "Loader와 Action이 나오기 전인 React Router DOM v6.4 이전에는 라우팅과 데이터 페칭이 완전히 분리되어 있었습니다. 라우터는 단순히 URL에 따라 어떤 컴포넌트를 렌더링할지만 결정했고, 데이터 로딩은 각 컴포넌트의 책임이었습니다."
 thumbnail: "https://www.howu.run/image/React-Router-Dom/thumbnail.webp"
 ---
 
