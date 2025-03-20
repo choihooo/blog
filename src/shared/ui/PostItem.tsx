@@ -12,7 +12,7 @@ export const PostItem = ({ post, isLoading }: PostListProps) => {
     <div className="group w-full cursor-pointer">
       <Link to={`/post/${encodeURIComponent(post.title)}`} className="block">
         <div className="flex justify-between">
-          <div className="mr-5 flex max-w-[501px] flex-col gap-4">
+          <div className="mr-5 flex max-w-[501px] min-w-[177px]: flex-col gap-4">
             {isLoading ? (
               <>
                 <Skeleton className="h-[16px] w-[200px]" />
@@ -35,7 +35,7 @@ export const PostItem = ({ post, isLoading }: PostListProps) => {
               </>
             )}
           </div>
-          <div className="h-[90px] min-w-[130px] overflow-hidden rounded-xl">
+          <div className="h-[90px] min-w-[130px] max-w-[140px] w-full overflow-hidden rounded-xl">
             {isLoading ? (
               <Skeleton className="h-full w-full" />
             ) : (
