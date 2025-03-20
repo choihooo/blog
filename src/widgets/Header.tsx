@@ -92,7 +92,7 @@ const Header = () => {
         <div className="mx-auto flex max-w-[1200px] flex-col gap-4 p-4">
           <Link
             to="/series"
-            className="cursor-pointer"
+            className="hover:bg-muted block rounded-md p-2"
             onClick={toggleMenuAndScrollToTop}
           >
             Series
