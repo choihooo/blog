@@ -59,11 +59,11 @@ const Header = () => {
           </button>
           <div className="hidden items-center gap-6 md:flex">
             <Link
-              to="/about"
+              to="/series"
               className="cursor-pointer"
               onClick={toggleMenuAndScrollToTop}
             >
-              About
+              Series
             </Link>
             <Link
               to="/portfolio"

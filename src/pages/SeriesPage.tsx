@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PostList } from "@/widgets/PostList";
+import { SeriesList } from "@/widgets/SeriesList";
 import SideBar from "@/widgets/SideBar";
 import { PostListType } from "@/types";
 
-const SearchPage = () => {
+interface SeriesMetaType {
+  [key: string]: {
+    count: number;
+    latest_date: string;
+    first_thumbnail: string;
+  };
+}
+
+const SeriesPage = () => {
   const { slug } = useParams<{ slug?: string }>();
   const decodedId = slug ? decodeURIComponent(slug).toLowerCase() : "";
   const [posts, setPosts] = useState<PostListType[]>([]);
   const [filteredPosts, setFilteredPosts] = useState<PostListType[]>([]);
+  const [seriesMeta, setSeriesMeta] = useState<SeriesMetaType>({});
   const [isLoading, setIsLoading] = useState(true);
 
   // 포스트 데이터 가져오기
@@ -28,7 +37,24 @@ const SearchPage = () => {
     fetchPosts();
   }, []);
 
-  // 포스트 필터링
+  // 시리즈 메타 데이터 가져오기
+  useEffect(() => {
+    const fetchSeriesMeta = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch("/seriesMeta.json");
+        const data: SeriesMetaType = await response.json();
+        setSeriesMeta(data);
+      } catch (error) {
+        console.error("❌ 시리즈 메타 데이터를 불러오는 중 오류 발생:", error);
+      }
+      setIsLoading(false);
+    };
+
+    fetchSeriesMeta();
+  }, []);
+
+  // 필터링된 포스트 업데이트
   useEffect(() => {
     if (!decodedId) {
       setFilteredPosts(posts);
@@ -41,18 +67,24 @@ const SearchPage = () => {
         ? post.tags.map((tag: string) => tag.toLowerCase())
         : [];
       const excerpt = post.excerpt?.toLowerCase() || "";
-      const series = post.series ? post.series.toLowerCase() : ""; // 시리즈 필터링 추가
 
       return (
         title.includes(decodedId) ||
         tags.some((tag: string) => tag.includes(decodedId)) ||
-        excerpt.includes(decodedId) ||
-        series.includes(decodedId) // 시리즈도 검색에 포함
+        excerpt.includes(decodedId)
       );
     });
 
     setFilteredPosts(filtered);
   }, [decodedId, posts]);
+
+  // 시리즈 리스트를 생성
+  const seriesList = Object.entries(seriesMeta).map(([name, meta]) => ({
+    name,
+    count: meta.count,
+    latestDate: meta.latest_date,
+    thumbnail: meta.first_thumbnail,
+  }));
 
   return (
     <div className="w-full">
@@ -64,15 +96,12 @@ const SearchPage = () => {
           />
         </div>
       </div>
-      <h1 className="mb-10 text-2xl font-bold">
-        "{decodedId}" 검색 결과 ({filteredPosts.length}개)
-      </h1>
       <div className="flex w-full justify-evenly">
-        <PostList posts={filteredPosts} isLoading={isLoading} />
+        <SeriesList series={seriesList} isLoading={isLoading} />
         <SideBar posts={filteredPosts} />
       </div>
     </div>
   );
 };
 
-export default SearchPage;
+export default SeriesPage;

@@ -3,6 +3,7 @@ import HomePage from "@/pages/HomePage";
 import { Layout } from "@/layouts/Layout";
 import PostDetail from "@/widgets/PostDetail";
 import SearchPage from "@/pages/SearchPage";
+import SeriesPage from "@/pages/SeriesPage";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/search/:slug",
         element: <SearchPage />,
-      },
+      },{
+        path: "/series",
+        element: <SeriesPage/>
+      }
     ],
   },
 ]);

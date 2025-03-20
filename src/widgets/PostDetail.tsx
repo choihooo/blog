@@ -44,7 +44,6 @@ function PostDetail() {
 
   useEffect(() => {
     if (slug) increaseViewCount(slug);
-    console.log(slug);
   }, [slug]);
 
   if (isLoading) return <p className="loading">로딩 중...</p>;
