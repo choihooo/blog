@@ -8,7 +8,6 @@ interface PostListProps {
 }
 
 export const PostItem = ({ post, isLoading }: PostListProps) => {
-  console.log(post.excerpt);
   return (
     <div className="group w-full cursor-pointer">
       <Link to={`/post/${encodeURIComponent(post.title)}`} className="block">
@@ -29,7 +28,9 @@ export const PostItem = ({ post, isLoading }: PostListProps) => {
                 <div className="group-hover:text-primary text-[16px]">
                   {post.title}
                 </div>
-                <div className="text-[13px]">{post.excerpt}</div>
+                <div className="max-h-[100px] overflow-hidden text-[13px] text-ellipsis">
+                  {post.excerpt}
+                </div>
                 <div className="text-[12px]">{post.date}</div>
               </>
             )}

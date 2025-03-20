@@ -20,7 +20,7 @@ export async function getPost(id: string | undefined) {
   try {
     // ✅ URL 디코딩 적용
     const decodedId = decodeURIComponent(id);
-    console.log(decodedId);
+
     // 🔹 마크다운 파일 불러오기
     const response = await fetch(`/_posts/${decodedId}.md`);
 
