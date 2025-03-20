@@ -65,13 +65,15 @@ const Header = () => {
             >
               Series
             </Link>
-            <Link
-              to="/portfolio"
+            <a
+              href="https://howu.notion.site/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="cursor-pointer"
               onClick={toggleMenuAndScrollToTop}
             >
               Portfolio
-            </Link>
+            </a>
             <div className="flex items-center justify-center">
               <input
                 type="text"
@@ -97,13 +99,15 @@ const Header = () => {
           >
             Series
           </Link>
-          <Link
-            to="/portfolio"
-            className="hover:bg-muted block rounded-md p-2"
+          <a
+            href="https://howu.notion.site/"
+            target="_blank"
+            rel="noopener noreferrer"
+             className="hover:bg-muted block rounded-md p-2"
             onClick={toggleMenuAndScrollToTop}
           >
             Portfolio
-          </Link>
+          </a>
           <div className="flex items-center justify-center py-2">
             <input
               type="text"
