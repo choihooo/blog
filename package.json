@@ -5,8 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "parse-meta": "node scripts/parseMeta.cjs",
+    "parse-series": "node scripts/parseSeries.cjs",
     "build": "tsc -b && vite build",
+    "prebuild": "npm run parse-meta && npm run parse-series",
     "lint": "eslint .",
+    "post": "npm run parse-meta && npm run parse-series",
+    "vercel-build": "npm run prebuild && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
