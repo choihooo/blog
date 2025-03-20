@@ -1,17 +1,3 @@
 {
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "env": {
-    "PUPPETEER_EXECUTABLE_PATH": "/opt/vercel/puppeteer/.local-chromium/linux-856909/chrome-linux64/chrome"
-  },
-  "functions": {
-    "api/**.ts": {
-      "runtime": "vercel-node@16"
-    }
-  },
   "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
