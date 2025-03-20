@@ -22,7 +22,7 @@ const Comments = () => {
 
   return (
     <>
-      <div ref={commentRef} className="mt-10 h-full pb-10"></div>
+      <div ref={commentRef} className="mt-10 h-full"></div>
     </>
   );
 };
