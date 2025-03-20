@@ -2,8 +2,14 @@
   {
     "title": "_document란-무엇일까",
     "date": "2025월 03월 19일 16:37",
-    "categories": ["Deb", "Next"],
-    "tags": ["Nextjs", "SEO"],
+    "categories": [
+      "Deb",
+      "Next"
+    ],
+    "tags": [
+      "Nextjs",
+      "SEO"
+    ],
     "series": "Next 스터디",
     "excerpt": "",
     "thumbnail": "https://www.howu.run/image/_document란-무엇일까/thumbnail.webp"
