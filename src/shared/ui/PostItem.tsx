@@ -8,6 +8,7 @@ interface PostListProps {
 }
 
 export const PostItem = ({ post, isLoading }: PostListProps) => {
+  console.log(post.excerpt);
   return (
     <div className="group w-full cursor-pointer">
       <Link to={`/post/${encodeURIComponent(post.title)}`} className="block">

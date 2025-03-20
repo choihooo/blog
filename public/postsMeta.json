@@ -11,7 +11,7 @@
       "SEO"
     ],
     "series": "Next 스터디",
-    "excerpt": "",
+    "excerpt": "Next.js에서는 애플리케이션의 모든 페이지가 React 컴포넌트로 이루어져 있지만, 기본적으로 HTML의 <html>, <head>, <body> 태그 같은 구조는 자동으로 생성됩니다. 하지만 때로는 이러한 구조를 커스터마이징할 필요가 있을 때가 있습니다. 바로 이때 사용하는 파일이 _document.js입니다.",
     "thumbnail": "https://www.howu.run/image/_document란-무엇일까/thumbnail.webp"
   }
 ]
