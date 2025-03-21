@@ -6,6 +6,7 @@ import { Tag } from "@/shared/ui/Tag";
 import { v4 as uuidv4 } from "uuid";
 import Comments from "@/shared/ui/Comments";
 import { increaseViewCount } from "@/lib/increaseViewCount";
+import { SEO } from "@/components/SEO"; // SEO 컴포넌트를 임포트
 
 function PostDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -52,6 +53,17 @@ function PostDetail() {
 
   return (
     <div className="mt-10 max-w-[900px]">
+      {/* SEO 컴포넌트를 이곳에 추가 */}
+      <SEO
+        title={"Howu Run" + postTitle}
+        description={postContent.slice(0, 160)} // 포스트 내용의 첫 160자를 description으로 설정
+        image={postThumbnail}
+        url={`https://howu.run/blog/${slug}`}
+        siteName="Howu Run"
+        keywords={postTags.join(", ")} // 태그들을 키워드로 사용
+        author="Howu"
+      />
+
       <header className="post-detail__header">
         {postThumbnail && (
           <div className="flex w-full justify-center">
