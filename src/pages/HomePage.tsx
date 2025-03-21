@@ -7,6 +7,7 @@ import { SEO } from "@/components/SEO";
 const HomePage = () => {
   const [posts, setPosts] = useState<PostListType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchPosts = async () => {
       setIsLoading(true);
@@ -44,7 +45,12 @@ const HomePage = () => {
 
   return (
     <>
-      <SEO title="Howu Run" />
+      <SEO
+        title="Howu Run"
+        description="Howu의 개발 블로그. 최신 개발 트렌드와 기술을 공유합니다."
+        image="https://www.howu.run/og.png"
+        url="https://howu.run"
+      />
       <div className="w-full">
         <div className="flex w-full items-center justify-center">
           <div className="mt-7 mb-10 h-[100px] w-full max-w-[900px] overflow-hidden rounded-2xl">

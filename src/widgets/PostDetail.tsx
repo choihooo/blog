@@ -55,7 +55,7 @@ function PostDetail() {
     <div className="mt-10 max-w-[900px]">
       {/* SEO 컴포넌트를 이곳에 추가 */}
       <SEO
-        title={"Howu Run" + postTitle}
+        title={"Howu Run - " + postTitle}
         description={postContent.slice(0, 160)} // 포스트 내용의 첫 160자를 description으로 설정
         image={postThumbnail}
         url={`https://howu.run/blog/${slug}`}
