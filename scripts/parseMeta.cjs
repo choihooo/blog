@@ -10,17 +10,24 @@ const posts = files
   .map((file) => {
     const content = fs.readFileSync(path.join(postsDirectory, file), "utf8");
     const metadata = fm(content);
-    return {
+
+    const post = {
       title: metadata.attributes.title,
       date: metadata.attributes.date,
       categories: metadata.attributes.categories,
       tags: metadata.attributes.tags,
-      series: metadata.attributes.series,
       excerpt: metadata.attributes.excerpt,
       thumbnail: metadata.attributes.thumbnail,
     };
+
+    // series 속성이 존재할 때만 추가
+    if (metadata.attributes.series) {
+      post.series = metadata.attributes.series;
+    }
+
+    return post;
   })
-  .sort((a, b) => b.date - a.date);
+  .sort((a, b) => new Date(b.date) - new Date(a.date)); // 날짜 내림차순 정렬
 
 fs.writeFileSync(outputJson, JSON.stringify(posts, null, 2));
 
