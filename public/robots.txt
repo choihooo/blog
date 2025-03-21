@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://howu.run/sitemap.xml

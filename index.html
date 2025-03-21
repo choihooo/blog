@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -9,8 +9,8 @@
     <meta name="keywords" content="Howu, Howu Run, 프론트엔드" />
     <meta name="author" content="최호" />
     <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Howu Run" />
     <meta property="og:description" content="Howu의 개발 블로그" />
     <meta property="og:image" content="https://www.howu.run/og.png" />
@@ -21,7 +21,6 @@
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="314" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Howu Run" />
     <meta name="twitter:description" content="Howu의 개발 블로그" />
@@ -37,24 +36,14 @@
       content="black-translucent"
     />
     <meta name="apple-mobile-web-app-title" content="Howu Run" />
-
-    <!-- Preload assets -->
-    <link rel="preload" href="/src/main.tsx" as="script" />
-    <link rel="preload" href="/favicon.ico" as="image" />
-
-    <script>
-      window.__PRERENDERED_DATA__ = {};
-    </script>
   </head>
   <body>
-    <div id="root">
-      <noscript>이 사이트는 JavaScript가 필요합니다.</noscript>
-    </div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if (typeof navigator.serviceWorker !== "undefined") {
-        navigator.serviceWorker.register("sw.js");
-      }
-    </script>
   </body>
+  <script>
+    if (typeof navigator.serviceWorker !== "undefined") {
+      navigator.serviceWorker.register("sw.js");
+    }
+  </script>
 </html>

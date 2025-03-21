@@ -16,18 +16,21 @@
       "@/utils/*": ["./src/utils/*"],
       "@/api/*": ["./src/api/*"]
     },
+
+    /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+
+    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "typeRoots": ["./node_modules/@types", "./src/types"] // 여기에 추가
+    "noUncheckedSideEffectImports": true
   },
   "include": ["src"]
 }

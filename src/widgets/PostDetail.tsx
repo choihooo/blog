@@ -6,7 +6,6 @@ import { Tag } from "@/shared/ui/Tag";
 import { v4 as uuidv4 } from "uuid";
 import Comments from "@/shared/ui/Comments";
 import { increaseViewCount } from "@/lib/increaseViewCount";
-import { SEO } from "@/components/SEO"; // ✅ SEO 컴포넌트 추가
 
 function PostDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -33,17 +32,6 @@ function PostDetail() {
           setPostDate(postData.date);
           setPostThumbnail(postData.thumbnail || "/default-thumbnail.jpg");
           setPostTags(postData.tags || []);
-
-          // ✅ 서버 렌더링된 데이터를 클라이언트에서 사용할 수 있도록 설정
-          window.__PRERENDERED_DATA__ = {
-            title: postData.title,
-            description: postData.content.slice(0, 150),
-            image: postData.thumbnail || "/default-thumbnail.jpg",
-            url: `https://howu.run/blog/${slug}`,
-            siteName: "Howu Run",
-            keywords: postData.tags.join(", "),
-            author: "최호",
-          };
         }
       } catch (error) {
         console.error("❌ 포스트를 불러오는 중 오류 발생:", error);
@@ -52,7 +40,7 @@ function PostDetail() {
     };
 
     fetchPostContent();
-  }, [decodedId, slug]);
+  }, [decodedId]);
 
   useEffect(() => {
     if (slug) increaseViewCount(slug);
@@ -64,17 +52,6 @@ function PostDetail() {
 
   return (
     <div className="mt-10 max-w-[900px]">
-      {/* ✅ SEO 컴포넌트 추가 */}
-      <SEO
-        title={postTitle}
-        description={postContent.slice(0, 150)} // 글 내용의 앞부분을 설명으로 사용
-        image={postThumbnail}
-        url={`https://howu.run/blog/${slug}`} // 동적 URL
-        siteName="Howu Run"
-        keywords={postTags.join(", ")}
-        author="최호"
-      />
-
       <header className="post-detail__header">
         {postThumbnail && (
           <div className="flex w-full justify-center">

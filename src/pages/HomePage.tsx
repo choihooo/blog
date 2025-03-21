@@ -2,6 +2,7 @@ import { PostList } from "@/widgets/PostList";
 import SideBar from "@/widgets/SideBar";
 import { useEffect, useState } from "react";
 import { PostListType } from "@/types";
+import { SEO } from "@/components/SEO";
 
 const HomePage = () => {
   const [posts, setPosts] = useState<PostListType[]>([]);
@@ -43,6 +44,7 @@ const HomePage = () => {
 
   return (
     <>
+      <SEO title="Howu Run" />
       <div className="w-full">
         <div className="flex w-full items-center justify-center">
           <div className="mt-7 mb-10 h-[100px] w-full max-w-[900px] overflow-hidden rounded-2xl">
