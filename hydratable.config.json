@@ -1,5 +1,5 @@
 {
-  "webroot": "/Users/choeho/blog/build",
+  "webroot": "dist",
   "host": "http://localhost",
   "port": 3000,
   "crawlingUrls": [
