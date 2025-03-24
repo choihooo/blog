@@ -12,7 +12,7 @@
     "prebuild": "npm run parse-meta && npm run parse-series && npm run crawls",
     "lint": "eslint .",
     "post": "npm run parse-meta && npm run parse-series ",
-    "vercel-build": "npm run prebuild && npm run build && npm run crawls",
+    "vercel-build": "npm run prebuild && npm run build && npm run crawls && npm run postbuild",
     "preview": "react-hydratable --preview",
     "postbuild": "react-hydratable"
   },
