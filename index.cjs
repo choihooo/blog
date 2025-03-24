@@ -3,7 +3,7 @@ const puppeteer = require("puppeteer");
 (async () => {
   const browser = await puppeteer.launch({
     headless: true,
-    timeout: 60000, // 밀리초 단위 타임아웃
+    timeout: 100000, // 밀리초 단위 타임아웃
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   // 나머지 코드
