@@ -1,5 +1,9 @@
 {
   "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-  "buildCommand": "apt-get update && apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2 && npm run build",
-  "installCommand": "npm install"
+  "buildCommand": "apk add --no-cache chromium nss freetype freetype-dev harfbuzz ca-certificates ttf-freefont && npm run build",
+  "installCommand": "npm install",
+  "env": {
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+    "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser"
+  }
 }
