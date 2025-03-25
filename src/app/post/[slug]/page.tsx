@@ -10,7 +10,9 @@ interface PageProps {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const decodedSlug = decodeURIComponent(resolvedParams.slug);
   const post = await getPost(decodedSlug);
@@ -24,26 +26,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonicalUrl = `https://howu.run/post/${decodedSlug}`;
   const thumbnailUrl = post.thumbnail || "/default-thumbnail.jpg";
-  const description = post.content.slice(0, 160).replace(/[#*`]/g, ''); // 마크다운 특수문자 제거
+  const description = post.content.slice(0, 160).replace(/[#*`]/g, ""); // 마크다운 특수문자 제거
 
   return {
-    title: `${post.title} | Howu Run`,
+    title: "Howu Run | " + post.title,
     description,
     metadataBase: new URL("https://howu.run"),
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: post.title,
+      title: "Howu Run | " + post.title,
       description,
       url: canonicalUrl,
       siteName: "Howu Run",
-      images: [{ 
-        url: thumbnailUrl,
-        width: 1200,
-        height: 630,
-        alt: post.title
-      }],
+      images: [
+        {
+          url: thumbnailUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
       type: "article",
       publishedTime: post.date,
       authors: ["Howu"],
@@ -51,14 +55,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: "summary_large_image",
-      title: post.title,
+      title: "Howu Run | " + post.title,
       description,
-      images: [{
-        url: thumbnailUrl,
-        width: 1200,
-        height: 630,
-        alt: post.title
-      }],
+      images: [
+        {
+          url: thumbnailUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
       creator: "@howu",
     },
     keywords: post.tags?.join(", "),
@@ -69,12 +75,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       googleBot: {
         index: true,
         follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
- 
   };
 }
 
@@ -105,25 +110,25 @@ export default async function PostPage({ params }: PageProps) {
   }
 
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     headline: post.title,
-    description: post.content.slice(0, 160).replace(/[#*`]/g, ''),
+    description: post.content.slice(0, 160).replace(/[#*`]/g, ""),
     image: post.thumbnail || "/default-thumbnail.jpg",
     datePublished: post.date,
     dateModified: post.date,
     author: {
-      '@type': 'Person',
-      name: 'Howu'
+      "@type": "Person",
+      name: "Howu",
     },
     publisher: {
-      '@type': 'Organization',
-      name: 'Howu Run',
+      "@type": "Organization",
+      name: "Howu Run",
       logo: {
-        '@type': 'ImageObject',
-        url: 'https://howu.run/logo.png'
-      }
-    }
+        "@type": "ImageObject",
+        url: "https://howu.run/logo.png",
+      },
+    },
   };
 
   return (

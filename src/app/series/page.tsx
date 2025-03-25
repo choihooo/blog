@@ -5,7 +5,7 @@ import { PostListType } from "@/types/types";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "시리즈 | Howu Run",
+  title: "Howu Run | 시리즈",
   description: "블로그의 시리즈 모음입니다.",
 };
 

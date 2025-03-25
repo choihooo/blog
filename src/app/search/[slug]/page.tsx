@@ -9,12 +9,14 @@ interface PageProps {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const resolvedParams = await params;
   const decodedSlug = decodeURIComponent(resolvedParams.slug);
 
   return {
-    title: `"${decodedSlug}" 검색 결과 | Howu Run`,
+    title: `"Howu Run | ${decodedSlug}" 검색 결과 `,
     description: `"${decodedSlug}" 검색어로 찾은 블로그 글 목록입니다.`,
   };
 }
