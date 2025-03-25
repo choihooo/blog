@@ -1,22 +1,6 @@
 import fs from "fs";
 import path from "path";
 
-interface Post {
-    series?: string;
-    date: string;
-    thumbnail: string;
-}
-
-interface SeriesData {
-    count: number;
-    latest_date: string;
-    first_thumbnail: string;
-}
-
-interface SeriesMeta {
-    [key: string]: SeriesData;
-}
-
 // JSON 파일 경로 수정
 const filePath = path.join(process.cwd(), "public/postsMeta.json");
 
@@ -28,7 +12,7 @@ if (!fs.existsSync(filePath)) {
 
 // JSON 파일 읽기
 const rawData = fs.readFileSync(filePath, "utf-8");
-const posts: Post[] = JSON.parse(rawData);
+const posts = JSON.parse(rawData);
 
 // 시리즈별 데이터 정리 (undefined인 시리즈는 제외)
 const seriesData = posts
@@ -36,23 +20,23 @@ const seriesData = posts
     .reduce((acc, post) => {
         const { series, date, thumbnail } = post;
 
-        if (!acc[series!]) {
-            acc[series!] = {
+        if (!acc[series]) {
+            acc[series] = {
                 count: 0,
                 latest_date: date,
                 first_thumbnail: thumbnail,
             };
         }
 
-        acc[series!].count += 1;
+        acc[series].count += 1;
 
         // 최신 날짜 업데이트
-        if (new Date(date) > new Date(acc[series!].latest_date)) {
-            acc[series!].latest_date = date;
+        if (new Date(date) > new Date(acc[series].latest_date)) {
+            acc[series].latest_date = date;
         }
 
         return acc;
-    }, {} as SeriesMeta);
+    }, {});
 
 // JSON 결과 파일로 저장
 const outputFilePath = path.join(process.cwd(), "public/seriesMeta.json");

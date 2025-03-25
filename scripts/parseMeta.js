@@ -2,26 +2,6 @@ import fs from "fs";
 import path from "path";
 import fm from "front-matter";
 
-interface PostAttributes {
-    title: string;
-    date: string;
-    categories: string[];
-    tags: string[];
-    excerpt: string;
-    thumbnail: string;
-    series?: string;
-}
-
-interface Post {
-    title: string;
-    date: string;
-    categories: string[];
-    tags: string[];
-    excerpt: string;
-    thumbnail: string;
-    series?: string;
-}
-
 const postsDirectory = path.join(process.cwd(), "public/_posts");
 const outputJson = path.join(process.cwd(), "public/postsMeta.json");
 
@@ -29,9 +9,9 @@ const files = fs.readdirSync(postsDirectory);
 const posts = files
     .map((file) => {
         const content = fs.readFileSync(path.join(postsDirectory, file), "utf8");
-        const metadata = fm<PostAttributes>(content);
+        const metadata = fm(content);
 
-        const post: Post = {
+        const post = {
             title: metadata.attributes.title,
             date: metadata.attributes.date,
             categories: metadata.attributes.categories,

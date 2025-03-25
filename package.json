@@ -2,13 +2,14 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "npm run parse-meta && npm run parse-series && next dev",
     "build": "npm run parse-meta && npm run parse-series && next build",
     "start": "next start",
     "lint": "next lint",
-    "parse-meta": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/parseMeta.mts",
-    "parse-series": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/parseSeries.mts"
+    "parse-meta": "node scripts/parseMeta.js",
+    "parse-series": "node scripts/parseSeries.js"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
