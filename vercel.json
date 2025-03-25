@@ -1,6 +1,8 @@
 {
   "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "env": {
-    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true"
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+    "AWS_LAMBDA_FUNCTION_VERSION": "$LATEST",
+    "AWS_REGION": "us-east-1"
   }
 }

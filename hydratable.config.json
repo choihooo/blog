@@ -23,5 +23,7 @@
       "--disable-gpu",
       "--disable-dev-shm-usage"
     ]
-  }
+  },
+  "useChromiumAWS": true,
+  "chromiumExecutablePath": "/var/task/node_modules/chrome-aws-lambda/bin/chromium"
 }
