@@ -1,9 +1,6 @@
 {
   "rewrites": [{ "source": "/(.*)", "destination": "/" }],
-  "buildCommand": "apk add --no-cache chromium nss freetype freetype-dev harfbuzz ca-certificates ttf-freefont && npm run build",
-  "installCommand": "npm install",
   "env": {
-    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
-    "PUPPETEER_EXECUTABLE_PATH": "/usr/bin/chromium-browser"
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true"
   }
 }
