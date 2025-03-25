@@ -4,15 +4,14 @@ import { SideBar } from "@/components/SideBar";
 import { PostListType } from "@/types/types";
 import Image from "next/image";
 
-interface Props {
-  params: {
-    slug: string;
-  };
+interface PageProps {
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const decodedSlug = decodeURIComponent(resolvedParams.slug);
 
   return {
     title: `"${decodedSlug}" 검색 결과 | Howu Run`,
@@ -47,9 +46,9 @@ async function getData(slug: string) {
   };
 }
 
-export default async function SearchPage({ params }: Props) {
-  const { slug } = await params;
-  const { decodedId, filteredPosts } = await getData(slug);
+export default async function SearchPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const { decodedId, filteredPosts } = await getData(resolvedParams.slug);
 
   return (
     <div className="w-full">

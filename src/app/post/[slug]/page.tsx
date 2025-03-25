@@ -5,15 +5,14 @@ import { Tag } from "@/components/Tag";
 import { Comments } from "@/components/Comments";
 import Image from "next/image";
 
-interface Props {
-  params: {
-    slug: string;
-  };
+interface PageProps {
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const decodedSlug = decodeURIComponent(slug);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const decodedSlug = decodeURIComponent(resolvedParams.slug);
   const post = await getPost(decodedSlug);
 
   if (!post) {
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const canonicalUrl = `https://howurun.com/post/${slug}`;
+  const canonicalUrl = `https://howurun.com/post/${decodedSlug}`;
   const thumbnailUrl = post.thumbnail || "/default-thumbnail.jpg";
 
   return {
@@ -72,9 +71,9 @@ async function getData(slug: string) {
   };
 }
 
-export default async function PostPage({ params }: Props) {
-  const { slug } = await params;
-  const post = await getData(slug);
+export default async function PostPage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const post = await getData(resolvedParams.slug);
 
   if (!post) {
     return (

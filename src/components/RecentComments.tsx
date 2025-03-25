@@ -13,7 +13,7 @@ export const RecentComments = () => {
       user: string;
       avatar: string;
       url: string;
-      postUrl: string;
+      postUrl: string | null;
       createdAt: string;
       title: string;
     }[]
@@ -37,8 +37,32 @@ export const RecentComments = () => {
     <div>
       <ul>
         {comments.map((comment) => (
-          <Link href={comment.postUrl} key={comment.id}>
-            <li className="mt-3 w-full p-5 hover:bg-chart-4 rounded-2xl">
+          comment.postUrl ? (
+            <Link href={comment.postUrl} key={comment.id}>
+              <li className="mt-3 w-full p-5 hover:bg-chart-4 rounded-2xl">
+                <div className="flex items-center gap-3">
+                  <div className="relative h-8 w-8">
+                    <Image
+                      src={comment.avatar}
+                      alt={comment.user}
+                      fill
+                      className="rounded-full"
+                    />
+                  </div>
+                  <span className="text-foreground font-semibold text-sm">
+                    {comment.user}
+                  </span>
+                </div>
+                <p className="text-foreground mt-1 text-sm">
+                  {comment.body.length > 100
+                    ? comment.body.slice(0, 100) + "..."
+                    : comment.body}
+                </p>
+                <span className="text-foreground text-xs">{comment.title}</span>
+              </li>
+            </Link>
+          ) : (
+            <li key={comment.id} className="mt-3 w-full p-5 bg-chart-4 rounded-2xl">
               <div className="flex items-center gap-3">
                 <div className="relative h-8 w-8">
                   <Image
@@ -59,7 +83,7 @@ export const RecentComments = () => {
               </p>
               <span className="text-foreground text-xs">{comment.title}</span>
             </li>
-          </Link>
+          )
         ))}
       </ul>
     </div>
