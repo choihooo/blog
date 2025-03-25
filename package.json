@@ -7,7 +7,7 @@
     "dev": "vite",
     "parse-meta": "node scripts/parseMeta.cjs",
     "parse-series": "node scripts/parseSeries.cjs",
-    "crawls": "node scripts/crawls.cjs",
+    "crawls": "node scripts/crawls.cjs || true",
     "build": "tsc -b && vite build",
     "prebuild": "npm run parse-meta && npm run parse-series && npm run crawls",
     "lint": "eslint .",
