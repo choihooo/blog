@@ -22,7 +22,12 @@ function updateReactSnapConfig() {
           collapseWhitespace: false,
           removeComments: false
         },
-        puppeteerArgs: ["--no-sandbox", "--disable-setuid-sandbox"],
+        puppeteerArgs: [
+          "--no-sandbox",
+          "--disable-setuid-sandbox",
+          "--disable-gpu",
+          "--disable-dev-shm-usage"
+        ],
         puppeteerIgnoreHTTPSErrors: true,
         skipThirdPartyRequests: true,
         crawl: true,

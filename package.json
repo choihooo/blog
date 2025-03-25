@@ -53,6 +53,7 @@
     "globals": "^15.15.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "puppeteer": "^13.5.0",
     "react-snap": "^1.23.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.24.1",
@@ -67,9 +68,10 @@
     },
     "puppeteerArgs": [
       "--no-sandbox",
-      "--disable-setuid-sandbox"
+      "--disable-setuid-sandbox",
+      "--disable-gpu",
+      "--disable-dev-shm-usage"
     ],
-    "puppeteerExecutablePath": "/usr/bin/chromium-browser",
     "puppeteerIgnoreHTTPSErrors": true,
     "skipThirdPartyRequests": true,
     "crawl": true
