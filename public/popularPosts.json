@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Next.js로 블로그 만들기",
+    "url": "/post/Next.js로-블로그-만들기",
+    "views": 150
+  },
+  {
+    "title": "React 상태 관리의 모든 것",
+    "url": "/post/React-상태-관리의-모든-것",
+    "views": 120
+  },
+  {
+    "title": "TypeScript 타입 시스템 이해하기",
+    "url": "/post/TypeScript-타입-시스템-이해하기",
+    "views": 100
+  }
+] 
