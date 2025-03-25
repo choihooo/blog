@@ -22,38 +22,59 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const canonicalUrl = `https://howurun.com/post/${decodedSlug}`;
+  const canonicalUrl = `https://howu.run/post/${decodedSlug}`;
   const thumbnailUrl = post.thumbnail || "/default-thumbnail.jpg";
+  const description = post.content.slice(0, 160).replace(/[#*`]/g, ''); // 마크다운 특수문자 제거
 
   return {
     title: `${post.title} | Howu Run`,
-    description: post.content.slice(0, 160),
-    metadataBase: new URL("https://howurun.com"),
+    description,
+    metadataBase: new URL("https://howu.run"),
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       title: post.title,
-      description: post.content.slice(0, 160),
+      description,
       url: canonicalUrl,
       siteName: "Howu Run",
-      images: [{ url: thumbnailUrl }],
+      images: [{ 
+        url: thumbnailUrl,
+        width: 1200,
+        height: 630,
+        alt: post.title
+      }],
       type: "article",
       publishedTime: post.date,
       authors: ["Howu"],
+      locale: "ko_KR",
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.content.slice(0, 160),
-      images: [thumbnailUrl],
+      description,
+      images: [{
+        url: thumbnailUrl,
+        width: 1200,
+        height: 630,
+        alt: post.title
+      }],
+      creator: "@howu",
     },
     keywords: post.tags?.join(", "),
     authors: [{ name: "Howu" }],
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
+ 
   };
 }
 
@@ -83,42 +104,70 @@ export default async function PostPage({ params }: PageProps) {
     );
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.content.slice(0, 160).replace(/[#*`]/g, ''),
+    image: post.thumbnail || "/default-thumbnail.jpg",
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      '@type': 'Person',
+      name: 'Howu'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Howu Run',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://howu.run/logo.png'
+      }
+    }
+  };
+
   return (
-    <div className="w-full">
-      <div className="mt-10 mx-auto max-w-[900px]">
-        <header className="post-detail__header">
-          {post.thumbnail && (
-            <div className="relative flex w-full justify-center">
-              <div className="relative h-[400px] w-full">
-                <Image
-                  src={post.thumbnail}
-                  alt={post.title}
-                  fill
-                  className="rounded-2xl object-fit"
-                  priority
-                />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="w-full">
+        <div className="mt-10 mx-auto max-w-[900px]">
+          <header className="post-detail__header">
+            {post.thumbnail && (
+              <div className="relative flex w-full justify-center">
+                <div className="relative h-[400px] w-full">
+                  <Image
+                    src={post.thumbnail}
+                    alt={post.title}
+                    fill
+                    className="rounded-2xl object-fit"
+                    priority
+                  />
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          <h1 className="text-foreground mt-[20px] text-3xl font-bold">
-            {post.title}
-          </h1>
-          <p className="text-popover mt-[20px]">{post.date}</p>
-          <ul className="mt-3 flex w-full flex-wrap gap-2">
-            {post.tags?.map((tag: string) => (
-              <li key={tag} className="tag">
-                <Tag text={tag} />
-              </li>
-            ))}
-          </ul>
-        </header>
+            <h1 className="text-foreground mt-[20px] text-3xl font-bold">
+              {post.title}
+            </h1>
+            <p className="text-popover mt-[20px]">{post.date}</p>
+            <ul className="mt-3 flex w-full flex-wrap gap-2">
+              {post.tags?.map((tag: string) => (
+                <li key={tag} className="tag">
+                  <Tag text={tag} />
+                </li>
+              ))}
+            </ul>
+          </header>
 
-        <main className="post-detail__content">
-          <MarkdownRenderer content={post.content} />
-          <Comments />
-        </main>
+          <main className="post-detail__content">
+            <MarkdownRenderer content={post.content} />
+            <Comments />
+          </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

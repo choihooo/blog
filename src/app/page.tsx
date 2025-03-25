@@ -5,12 +5,51 @@ import { PostListType } from "@/types/types";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Howu Run",
-  description: "Howu의 개발 블로그. 최신 개발 트렌드와 기술을 공유합니다.",
+  title: "Howu Run | 개발자의 기술 블로그",
+  description: "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+  metadataBase: new URL("https://howu.run"),
+  alternates: {
+    canonical: "https://howu.run",
+  },
   openGraph: {
-    title: "Howu Run",
-    description: "Howu의 개발 블로그. 최신 개발 트렌드와 기술을 공유합니다.",
-    images: [{ url: "https://www.howu.run/og.png" }],
+    title: "Howu Run | 개발자의 기술 블로그",
+    description: "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+    url: "https://howu.run",
+    siteName: "Howu Run",
+    images: [{ 
+      url: "/banner.png",
+      width: 1200,
+      height: 630,
+      alt: "Howu Run Banner"
+    }],
+    type: "website",
+    locale: "ko_KR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Howu Run | 개발자의 기술 블로그",
+    description: "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+    images: [{
+      url: "/banner.png",
+      width: 1200,
+      height: 630,
+      alt: "Howu Run Banner"
+    }],
+    creator: "@howu",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-site-verification',
   },
 };
 
@@ -45,29 +84,52 @@ async function getPosts(): Promise<PostListType[]> {
   }
 }
 
-export default async function HomePage() {
+export default async function Home() {
   const posts = await getPosts();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Howu Run',
+    description: '프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.',
+    url: 'https://howu.run',
+    publisher: {
+      '@type': 'Organization',
+      name: 'Howu Run',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://howu.run/logo.png'
+      }
+    }
+  };
+
   return (
-    <div className="w-full">
-      <div className="flex w-full items-center justify-center">
-        <div className="mt-7 mb-10 h-[100px] w-full max-w-[1200px] overflow-hidden rounded-2xl">
-          <Image
-            src="/banner.png"
-            alt="Search Banner"
-            width={1200}
-            height={100}
-            className="rounded-2xl object-fit"
-            priority
-          />
-        </div>
-      </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="w-full">
-        <div className="flex w-full justify-between max-w-[1200px] mx-auto">
-          <PostList posts={posts} />
-          <SideBar posts={posts} />
+        <div className="flex w-full items-center justify-center">
+          <div className="mt-7 mb-10 h-[100px] w-full max-w-[1200px] overflow-hidden rounded-2xl">
+            <Image
+              src="/banner.png"
+              alt="Howu Run Banner"
+              width={1200}
+              height={100}
+              className="rounded-2xl object-fit"
+              priority
+            />
+          </div>
+        </div>
+
+        <div className="w-full">
+          <div className="flex w-full justify-between mx-auto max-w-[1200px]">
+            <PostList posts={posts} />
+            <SideBar posts={posts} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,12 +1,14 @@
 {
-  "name": "nextblog",
+  "name": "blog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "npm run parse-meta && npm run parse-series && next dev",
+    "build": "npm run parse-meta && npm run parse-series && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "parse-meta": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/parseMeta.mts",
+    "parse-series": "NODE_OPTIONS=\"--loader ts-node/esm\" node --experimental-specifier-resolution=node scripts/parseSeries.mts"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.2",
@@ -35,6 +37,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
