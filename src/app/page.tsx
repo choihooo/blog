@@ -125,7 +125,7 @@ export default async function Home() {
 
         <div className="w-full">
           <div className="flex w-full justify-between mx-auto max-w-[1200px]">
-            <PostList posts={posts} />
+            <PostList posts={posts} decodeId={""} />
             <SideBar posts={posts} />
           </div>
         </div>

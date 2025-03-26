@@ -1,59 +1,40 @@
 import { Metadata } from "next";
 import { PostList } from "@/components/PostList";
 import { SideBar } from "@/components/SideBar";
+import { getData } from "@/lib/getData";
 import { PostListType } from "@/types/types";
 import Image from "next/image";
+export const metadata: Metadata = {
+  title: "검색 결과",
+  description: "검색 결과 페이지입니다.",
+};
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export async function generateMetadata({
+export default async function SearchPage({
   params,
-}: PageProps): Promise<Metadata> {
-  const resolvedParams = await params;
-  const decodedSlug = decodeURIComponent(resolvedParams.slug);
+}: {
+  params: { slug: string };
+}) {
+  const resolvedParams = await Promise.resolve(params);
+  const decodeId = decodeURIComponent(resolvedParams.slug);
+  const posts: PostListType[] = await getData();
 
-  return {
-    title: `"Howu Run | ${decodedSlug}" 검색 결과 `,
-    description: `"${decodedSlug}" 검색어로 찾은 블로그 글 목록입니다.`,
-  };
-}
-
-async function getData(slug: string) {
-  const response = await fetch("http://www.howu.run/postsMeta.json");
-  const posts: PostListType[] = await response.json();
-  const decodedId = decodeURIComponent(slug).toLowerCase();
-
+  const searchTerm = decodeId.toLowerCase();
   const filteredPosts = posts.filter((post) => {
     const title = post.title.toLowerCase();
-    const tags = Array.isArray(post.tags)
-      ? post.tags.map((tag: string) => tag.toLowerCase())
-      : [];
-    const excerpt = post.excerpt?.toLowerCase() || "";
-    const series = post.series ? post.series.toLowerCase() : "";
+    const tags = post.tags.map((tag) => tag.toLowerCase());
+    const series = post.series.toLowerCase();
+    const excerpt = post.excerpt.toLowerCase();
 
     return (
-      title.includes(decodedId) ||
-      tags.some((tag: string) => tag.includes(decodedId)) ||
-      excerpt.includes(decodedId) ||
-      series.includes(decodedId)
+      title.includes(searchTerm) ||
+      tags.some((tag) => tag.includes(searchTerm)) ||
+      series.includes(searchTerm) ||
+      excerpt.includes(searchTerm)
     );
   });
 
-  return {
-    decodedId,
-    filteredPosts,
-  };
-}
-
-export default async function SearchPage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const { decodedId, filteredPosts } = await getData(resolvedParams.slug);
-
   return (
-    <div className="w-full">
+    <>
       <div className="flex w-full items-center justify-center">
         <div className="mt-7 mb-10 h-[100px] w-full max-w-[1200px] overflow-hidden rounded-2xl">
           <Image
@@ -66,13 +47,12 @@ export default async function SearchPage({ params }: PageProps) {
           />
         </div>
       </div>
-
       <div className="w-full">
         <div className="flex w-full justify-between mx-auto max-w-[1200px]">
-          <PostList posts={filteredPosts} decodeId={decodedId} />
-          <SideBar posts={filteredPosts} />
+          <PostList posts={filteredPosts} decodeId={decodeId} />
+          <SideBar posts={posts} />
         </div>
       </div>
-    </div>
+    </>
   );
 }
