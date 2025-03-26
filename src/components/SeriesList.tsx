@@ -1,5 +1,5 @@
 import { SeriesItem } from "@/components/SeriesItem";
-import { SeriesListType } from "@/types/types";
+import { SeriesListType } from "@/types/types.d";
 
 interface SeriesListProps {
   series: SeriesListType[];
