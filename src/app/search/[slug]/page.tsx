@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default async function SearchPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const resolvedParams = await Promise.resolve(params);
   const decodeId = decodeURIComponent(resolvedParams.slug);
