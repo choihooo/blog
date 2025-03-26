@@ -10,7 +10,7 @@ thumbnail: "https://www.howu.run/image/next-vercel/thumbnail.png"
 
 # 1. 배포 방식 선택
 
-Next.js는 **표준 빌드(Standard Build)**와 **전체 정적 빌드(Full Static Build)** 두 가지 방식으로 배포할 수 있다.
+Next.js는 **표준 빌드(Standard Build)** 와 **전체 정적 빌드(Full Static Build)** 두 가지 방식으로 배포할 수 있다.
 
 **표준 빌드**
 
@@ -76,7 +76,7 @@ Vercel에서는 `.env.local` 파일을 사용하지 않고, 환경 변수를 직
 1. "Settings" → "Environment Variables"로 이동한다.
 2. 환경 변수를 추가하고 저장한 뒤, "Redeploy"를 클릭해서 적용한다.
 
-```
+```jsx
 NEXT_PUBLIC_API_URL=https://api.example.com
 SECRET_KEY=mysecretkey
 ```
@@ -104,7 +104,7 @@ Vercel은 기본적으로 GitHub와 연동하여 자동 배포를 지원한다.
 - `main` 브랜치에 푸시하면 자동으로 배포된다.
 - 별도의 브랜치를 생성해 개발 환경을 유지하고 싶다면, "Preview Deployment" 기능을 활용하면 된다.
 
-```
+```jsx
 git push origin feature/new-feature
 ```
 
