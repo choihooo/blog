@@ -1,5 +1,15 @@
 import { Comment } from "@/types/types";
 
+interface GitHubDiscussion {
+  id: string;
+  user: {
+    login: string;
+  };
+  body: string;
+  updated_at: string;
+  title: string;
+}
+
 export async function getLatestComments(): Promise<Comment[]> {
   try {
     const response = await fetch(
@@ -15,8 +25,8 @@ export async function getLatestComments(): Promise<Comment[]> {
       throw new Error("Failed to fetch comments");
     }
 
-    const discussions = await response.json();
-    return discussions.map((discussion: any) => ({
+    const discussions: GitHubDiscussion[] = await response.json();
+    return discussions.map((discussion) => ({
       id: discussion.id,
       author: discussion.user.login,
       content: discussion.body,
