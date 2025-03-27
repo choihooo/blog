@@ -5,36 +5,43 @@ import { PostListType } from "@/types/types";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Howu Run | 개발자의 기술 블로그",
-  description: "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+  title: "Howu Run | Howu의 기술 블로그",
+  description:
+    "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
   metadataBase: new URL("https://howu.run"),
   alternates: {
     canonical: "https://howu.run",
   },
   openGraph: {
-    title: "Howu Run | 개발자의 기술 블로그",
-    description: "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+    title: "Howu Run | Howu의 기술 블로그",
+    description:
+      "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
     url: "https://howu.run",
     siteName: "Howu Run",
-    images: [{ 
-      url: "/banner.png",
-      width: 1200,
-      height: 630,
-      alt: "Howu Run Banner"
-    }],
+    images: [
+      {
+        url: "/banner.png",
+        width: 800,
+        height: 400,
+        alt: "Howu Run Banner",
+      },
+    ],
     type: "website",
     locale: "ko_KR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Howu Run | 개발자의 기술 블로그",
-    description: "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
-    images: [{
-      url: "/banner.png",
-      width: 1200,
-      height: 630,
-      alt: "Howu Run Banner"
-    }],
+    title: "Howu Run | Howu의 기술 블로그",
+    description:
+      "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+    images: [
+      {
+        url: "/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Howu Run Banner",
+      },
+    ],
     creator: "@howu",
   },
   robots: {
@@ -43,20 +50,17 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
-  },
-  verification: {
-    google: 'your-google-site-verification',
   },
 };
 
 async function getPosts(): Promise<PostListType[]> {
   try {
     const response = await fetch("https://www.howu.run/postsMeta.json", {
-      next: { revalidate: 3600 }, // 1시간마다 재검증
+      next: { revalidate: 3600 },
     });
     const data: PostListType[] = await response.json();
 
@@ -88,19 +92,20 @@ export default async function Home() {
   const posts = await getPosts();
 
   const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Howu Run',
-    description: '프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.',
-    url: 'https://howu.run',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Howu Run",
+    description:
+      "프론트엔드 개발자 Howu의 기술 블로그입니다. 웹 개발, React, TypeScript, Next.js 등 다양한 기술 관련 포스트를 공유합니다.",
+    url: "https://howu.run",
     publisher: {
-      '@type': 'Organization',
-      name: 'Howu Run',
+      "@type": "Organization",
+      name: "Howu Run",
       logo: {
-        '@type': 'ImageObject',
-        url: 'https://howu.run/logo.png'
-      }
-    }
+        "@type": "ImageObject",
+        url: "https://howu.run/logo.png",
+      },
+    },
   };
 
   return (

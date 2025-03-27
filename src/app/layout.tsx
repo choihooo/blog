@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <head>
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -41,6 +41,11 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="apple-touch-startup-image" href="/splash.png" />
+        <meta name="apple-mobile-web-app-splash-screen" content="yes" />
+        <meta name="apple-mobile-web-app-splash-screen-image" content="/splash.png" />
+        <meta name="apple-mobile-web-app-splash-screen-resize-mode" content="contain" />
+        <meta name="apple-mobile-web-app-splash-screen-background-color" content="#ffffff" />
       </head>
       <body className={inter.className}>
         <ThemeProvider
@@ -49,8 +54,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main className="min-h-screen p-4 md:p-8 bg-background">{children}</main>
+          <div className="min-h-screen bg-background">
+            <Header />
+            <main className="p-4 md:p-8">
+              {children}
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

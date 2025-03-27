@@ -34,5 +34,11 @@
   "apple-mobile-web-app-capable": "yes",
   "apple-mobile-web-app-status-bar-style": "default",
   "apple-mobile-web-app-title": "Howu Run",
-  "prefer_related_applications": false
+  "prefer_related_applications": false,
+  "splash_pages": null,
+  "splash_screen": {
+    "image": "/splash.png",
+    "resize_mode": "contain",
+    "background_color": "#ffffff"
+  }
 }
