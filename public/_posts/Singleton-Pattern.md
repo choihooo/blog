@@ -1,6 +1,6 @@
 ---
 title: "Singleton-Pattern"
-date: 2025월 03월 21일 12:54
+date: 2025월 03월 28일 12:54
 categories: [Dev]
 tags: [디자인패턴, 싱글톤 패턴]
 series: "Design Pattern"
