@@ -47,6 +47,20 @@
     "series": "Next 스터디"
   },
   {
+    "title": "SOLID-설계원칙",
+    "date": "2025월 04월 09일 13:44",
+    "categories": [
+      "Dev"
+    ],
+    "tags": [
+      "SOLID",
+      "디자인 패턴"
+    ],
+    "excerpt": "개발을 하다 보면 코드가 점점 복잡해지고, 유지보수가 어려워지는 순간을 맞이하게 되는 경우가 많다. 특히 규모가 있는 프로젝트이거나 협업을 진행할수록 이런 문제는 자주 발생하게 된다. 이런 상황에서 코드의 품질을 유지하고 확장성과 유지보수성을 높이기 위한 설계 기준이 필요하며, 대표적인 예로 SOLID 원칙이 있다.",
+    "thumbnail": "https://www.howu.run/image/designPattern/2.svg",
+    "series": "Design Pattern"
+  },
+  {
     "title": "Singleton-Pattern",
     "date": "2025월 03월 28일 12:54",
     "categories": [
