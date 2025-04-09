@@ -17,9 +17,13 @@ thumbnail: "https://www.howu.run/image/designPattern/2.svg"
 > SOLID는 다섯 가지 객체지향 설계 원칙의 앞 글자를 따서 만든 약어이다.
 
 S - SRP (Single Responsibility Principle): 하나의 클래스는 하나의 책임만 가져야 한다.
+
 O - OCP (Open/Closed Principle): 확장에는 열려 있고, 변경에는 닫혀 있어야 한다.
+
 L - LSP (Liskov Substitution Principle): 자식 클래스는 부모 클래스를 대체할 수 있어야 한다.
+
 I - ISP (Interface Segregation Principle): 필요한 기능만 가지는 작은 인터페이스를 사용해야 한다.
+
 D - DIP (Dependency Inversion Principle): 구체화가 아닌 추상화에 의존해야 한다.
 
 이 원칙들은 객체지향 프로그래밍에서 소프트웨어의 유연성과 확장성을 높이기 위해 널리 사용되는 설계 지침이다.
