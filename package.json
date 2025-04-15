@@ -8,6 +8,7 @@
     "build": "npm run parse-meta && npm run parse-series && next build",
     "start": "next start",
     "lint": "next lint",
+    "post": "npm run parse-meta && npm run parse-series",
     "parse-meta": "node scripts/parseMeta.js",
     "parse-series": "node scripts/parseSeries.js"
   },
