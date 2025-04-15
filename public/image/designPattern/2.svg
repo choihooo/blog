@@ -1,0 +1,35 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 배경 -->
+  <rect x="0" y="0" width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- 상단 디자인 요소 -->
+  <rect x="0" y="0" width="800" height="100" fill="#2c3e50" />
+  
+  <!-- 하단 디자인 요소 -->
+  <rect x="0" y="500" width="800" height="100" fill="#2c3e50" />
+  
+  <!-- 중앙 메인 제목 박스 -->
+  <rect x="100" y="150" width="600" height="300" rx="20" fill="#ecf0f1" stroke="#34495e" stroke-width="4" />
+  
+  <!-- SOLID 글자 -->
+  <text x="400" y="250" font-family="Arial, sans-serif" font-size="80" font-weight="bold" text-anchor="middle" fill="#e74c3c">SOLID</text>
+  
+  <!-- 부제목 -->
+  <text x="400" y="330" font-family="Arial, sans-serif" font-size="36" text-anchor="middle" fill="#2c3e50">설계원칙</text>
+  
+  <!-- 각 원칙 아이콘 -->
+  <circle cx="200" cy="400" r="30" fill="#3498db" />
+  <text x="200" y="410" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">S</text>
+  
+  <circle cx="300" cy="400" r="30" fill="#2ecc71" />
+  <text x="300" y="410" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">O</text>
+  
+  <circle cx="400" cy="400" r="30" fill="#f1c40f" />
+  <text x="400" y="410" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">L</text>
+  
+  <circle cx="500" cy="400" r="30" fill="#e67e22" />
+  <text x="500" y="410" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">I</text>
+  
+  <circle cx="600" cy="400" r="30" fill="#9b59b6" />
+  <text x="600" y="410" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">D</text>
+</svg>
