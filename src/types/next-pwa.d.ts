@@ -32,7 +32,7 @@ declare module "next-pwa" {
         ignoreVary?: boolean;
       };
       rangeRequests?: boolean;
-      plugins?: any[];
+      plugins?: unknown[]; // any 대신 unknown 사용
     };
   }
 
@@ -45,7 +45,7 @@ declare module "next-pwa" {
     runtimeCaching?: RuntimeCachingRule[];
     workbox?: {
       excludes?: string[];
-      [key: string]: any;
+      [key: string]: unknown;
     };
   }
 
